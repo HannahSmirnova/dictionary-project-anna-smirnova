@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "./Audio.css";
 
 export default function Audio(props) {
   const [audioUrl, setAudioUrl] = useState(null);
 
   useEffect(() => {
     if (!props.word) {
-      setAudioUrl(null); // Clear audio if word is empty
+      setAudioUrl(null);
       return;
     }
 
-    setAudioUrl(null); // Clear previous audio immediately
+    setAudioUrl(null);
 
     const apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${props.word}`;
 
@@ -32,9 +33,11 @@ export default function Audio(props) {
   }
 
   return (
-    <audio controls>
-      <source src={audioUrl} type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
+    <div className="audio-wrapper">
+      <audio controls>
+        <source src={audioUrl} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
   );
 }

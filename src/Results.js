@@ -14,12 +14,15 @@ export default function Results(props) {
 
   return (
     <div className="results">
-      <h2>
-        {word.word}{" "}
+      <h2 className="glow-text ">
+        <span>{word.word}</span>
+        <span className="ps-5"> [{word.phonetic}]</span>
         <span>
+          {" "}
           <Audio word={props.word.word} />{" "}
         </span>
       </h2>
+
       <Meanings word={word} />
     </div>
   );

@@ -2,73 +2,61 @@ import Synonyms from "./Synonyms";
 
 export default function Meanings(props) {
   const word = props.word;
-  let phoneticSection = null;
   let meaningsSection = null;
 
-  if (word.phonetic) {
-    phoneticSection = <p>[{word.phonetic}]</p>;
-  }
+  if (word.meanings && word.meanings.length > 0) {
+    const groupedMeanings = {};
 
-  if (word.meanings) {
-    if (word.meanings.length > 0) {
-      const groupedMeanings = {};
+    for (let i = 0; i < word.meanings.length; i++) {
+      const meaning = word.meanings[i];
+      const part = meaning.partOfSpeech || "unspecified";
 
-      for (let i = 0; i < word.meanings.length; i = i + 1) {
-        const meaning = word.meanings[i];
-        const part = meaning.partOfSpeech;
-
-        if (!groupedMeanings[part]) {
-          groupedMeanings[part] = [];
-        }
-
-        groupedMeanings[part].push(meaning);
+      if (!groupedMeanings[part]) {
+        groupedMeanings[part] = [];
       }
 
-      const meaningSections = [];
+      groupedMeanings[part].push(meaning);
+    }
 
-      for (const part in groupedMeanings) {
-        const definitions = groupedMeanings[part];
-        const definitionItems = [];
+    const meaningSections = [];
 
-        for (let i = 0; i < definitions.length; i = i + 1) {
-          const def = definitions[i];
-          const exampleItems = [];
+    for (const part in groupedMeanings) {
+      const definitions = groupedMeanings[part];
+      const definitionItems = [];
 
-          if (def.example) {
-            exampleItems.push(
-              <li key={"ex-" + i}>
-                Example: <em>{def.example}</em>
-              </li>
-            );
-          }
+      for (let i = 0; i < definitions.length; i++) {
+        const def = definitions[i];
+        const exampleItems = [];
 
-          definitionItems.push(
-            <li key={"def-" + i}>
-              {def.definition}
-              {exampleItems.length > 0 ? <ul>{exampleItems}</ul> : null}
-              <Synonyms list={def.synonyms} />
+        if (def.example) {
+          exampleItems.push(
+            <li key={"ex-" + i}>
+              Example: <em>{def.example}</em>
             </li>
           );
         }
 
-        meaningSections.push(
-          <div key={part}>
-            <p>
-              <strong>{part}:</strong>
-            </p>
-            <ol>{definitionItems}</ol>
-          </div>
+        definitionItems.push(
+          <li key={"def-" + i}>
+            {def.definition}
+            {exampleItems.length > 0 ? <ul>{exampleItems}</ul> : null}
+            <Synonyms list={def.synonyms} />
+          </li>
         );
       }
 
-      meaningsSection = <div>{meaningSections}</div>;
+      meaningSections.push(
+        <div key={part}>
+          <p>
+            <strong className="part-speech">{part}:</strong>
+          </p>
+          <ol>{definitionItems}</ol>
+        </div>
+      );
     }
+
+    meaningsSection = <div className="meanings-grid">{meaningSections}</div>;
   }
 
-  return (
-    <div className="meaning">
-      {phoneticSection}
-      {meaningsSection}
-    </div>
-  );
+  return <div className="meaning">{meaningsSection}</div>;
 }

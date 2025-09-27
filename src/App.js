@@ -6,7 +6,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>DICTIONARY</h1>
+        <div className="dictionary">
+          {" "}
+          <h1>DICTIONARY</h1>
+        </div>
         <main>
           <SearchEngine />
         </main>
