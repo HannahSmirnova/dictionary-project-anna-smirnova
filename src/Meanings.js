@@ -1,3 +1,5 @@
+import Synonyms from "./Synonyms";
+
 export default function Meanings(props) {
   const word = props.word;
   let phoneticSection = null;
@@ -35,7 +37,7 @@ export default function Meanings(props) {
           if (def.example) {
             exampleItems.push(
               <li key={"ex-" + i}>
-                <em>{def.example}</em>
+                Example: <em>{def.example}</em>
               </li>
             );
           }
@@ -53,7 +55,7 @@ export default function Meanings(props) {
             <p>
               <strong>{part}:</strong>
             </p>
-            <ul>{definitionItems}</ul>
+            <ol>{definitionItems}</ol>
           </div>
         );
       }
@@ -66,6 +68,8 @@ export default function Meanings(props) {
     <div className="meaning">
       {phoneticSection}
       {meaningsSection}
+      <br />
+      <Synonyms />
     </div>
   );
 }
