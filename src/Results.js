@@ -2,22 +2,13 @@ import Meanings from "./Meanings";
 import "./Results.css";
 
 export default function Results(props) {
-  console.log(props.results);
-  if (props.results) {
-    return (
-      <div className="results">
-        <h2>{props.results.word}</h2>
-        {props.results.meanings.map(function (meaning, index) {
-          return (
-            <div key={index}>
-              <Meanings meaning={meaning} />
-            </div>
-          );
-        })}
-      </div>
-    );
-  } else {
-    return null;
+  if (!props.word) {
+    return <p>No definition found. Try another word!</p>;
   }
+  return (
+    <div className="results">
+      <h2>{props.word.word}</h2>
+      <Meanings word={props.word} />
+    </div>
+  );
 }
-//meaning.definitions[0].definition

@@ -4,21 +4,30 @@ import axios from "axios";
 
 export default function SearchEngine() {
   let [keyword, setKeyword] = useState("");
-  let [results, setResults] = useState(null);
+  let [word, setWord] = useState(null);
 
   function handleResponse(response) {
-    setResults(response.data[0]);
+    setWord(response.data);
   }
 
   function search(event) {
     event.preventDefault();
-    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
-    axios.get(apiUrl).then(handleResponse);
+    const apiKey = "60503d6efotf2704dfb74d90d8ce4ea6";
+    const apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
+
+    axios
+      .get(apiUrl)
+      .then(handleResponse)
+      .catch(function (error) {
+        console.error("API error:", error);
+        setWord(null);
+      });
   }
 
   function handleKeywordChange(event) {
     setKeyword(event.target.value);
   }
+
   return (
     <div className="search-engine">
       <form onSubmit={search}>
@@ -27,11 +36,10 @@ export default function SearchEngine() {
           onChange={handleKeywordChange}
           placeholder="Enter a word..."
           autoFocus={true}
-        ></input>
-        <input type="submit" value="Search"></input>
+        />
+        <input type="submit" value="Search" />
       </form>
-      <Results results={results} />
+      <Results word={word} />
     </div>
   );
 }
-//https://api.dictionaryapi.dev/api/v2/entries/en/sunset
