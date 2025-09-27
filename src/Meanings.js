@@ -46,6 +46,7 @@ export default function Meanings(props) {
             <li key={"def-" + i}>
               {def.definition}
               {exampleItems.length > 0 ? <ul>{exampleItems}</ul> : null}
+              <Synonyms list={def.synonyms} />
             </li>
           );
         }
@@ -68,8 +69,6 @@ export default function Meanings(props) {
     <div className="meaning">
       {phoneticSection}
       {meaningsSection}
-      <br />
-      <Synonyms />
     </div>
   );
 }
