@@ -1,6 +1,6 @@
 import Meanings from "./Meanings";
 import "./Results.css";
-
+import Audio from "./Audio";
 export default function Results(props) {
   const word = props.word;
 
@@ -14,7 +14,12 @@ export default function Results(props) {
 
   return (
     <div className="results">
-      <h2>{word.word}</h2>
+      <h2>
+        {word.word}{" "}
+        <span>
+          <Audio word={props.word.word} />{" "}
+        </span>
+      </h2>
       <Meanings word={word} />
     </div>
   );
