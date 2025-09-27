@@ -2,8 +2,17 @@
   text-align: center;
   margin-top: 60px;
 }
-
+h1 {
+  padding-bottom: 30px;
+}
 footer {
   font-size: smaller;
   margin-top: 200px;
+}
+.searh-engine {
+  display: inline-block;
+}
+main {
+  text-align: left;
+  padding-left: 20px;
 }
