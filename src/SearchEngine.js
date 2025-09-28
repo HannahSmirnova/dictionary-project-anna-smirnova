@@ -6,10 +6,6 @@ export default function SearchEngine() {
   let [keyword, setKeyword] = useState("");
   let [word, setWord] = useState(null);
 
-  function handleResponse(response) {
-    setWord(response.data);
-  }
-
   function search(event) {
     event.preventDefault();
     const apiKey = "60503d6efotf2704dfb74d90d8ce4ea6";
@@ -17,7 +13,9 @@ export default function SearchEngine() {
 
     axios
       .get(apiUrl)
-      .then(handleResponse)
+      .then(function (response) {
+        setWord(response.data);
+      })
       .catch(function (error) {
         console.error("API error:", error);
         setWord(null);

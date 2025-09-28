@@ -47,6 +47,28 @@ h2 {
 .example {
   color: #ffffff;
 }
+.images {
+  margin-top: 40px;
+}
+.image-card {
+  border: 1px solid #ffd8de;
+  border-radius: 12px;
+  background-color: transparent;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.image-card:hover {
+  transform: scale(1.03);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
 @media (max-width: 600px) {
   .results {
     padding-left: 10px;

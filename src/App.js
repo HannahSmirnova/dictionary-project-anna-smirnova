@@ -1,5 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
+
 import SearchEngine from "./SearchEngine";
 
 function App() {
@@ -7,11 +8,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="dictionary">
-          {" "}
           <h1>DICTIONARY</h1>
         </div>
         <main>
           <SearchEngine />
+          <div className="images"></div>
         </main>
       </header>
       <footer>

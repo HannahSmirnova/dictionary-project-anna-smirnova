@@ -1,6 +1,8 @@
 import Meanings from "./Meanings";
 import "./Results.css";
 import Audio from "./Audio";
+import Images from "./Images";
+
 export default function Results(props) {
   const word = props.word;
 
@@ -24,6 +26,9 @@ export default function Results(props) {
       </h2>
 
       <Meanings word={word} />
+      <div className="images">
+        <Images keyword={props.word.word} />
+      </div>
     </div>
   );
 }
