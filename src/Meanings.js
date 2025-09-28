@@ -31,7 +31,7 @@ export default function Meanings(props) {
         if (def.example) {
           exampleItems.push(
             <li key={"ex-" + i}>
-              Example: <em>{def.example}</em>
+              <em className="example">{def.example}</em>
             </li>
           );
         }

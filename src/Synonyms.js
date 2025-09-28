@@ -8,8 +8,8 @@ export default function Synonyms(props) {
   const sentence = list.join(", ") + ".";
 
   return (
-    <p>
-      <strong>Synonyms:</strong> {sentence}
+    <p className="synonyms pt-3">
+      <span className="synonyms-title">Synonyms:</span> {sentence}
     </p>
   );
 }

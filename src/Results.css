@@ -20,6 +20,7 @@ h2 {
 .part-speech {
   font-size: 26px;
   padding-left: 10px;
+  color: white;
 }
 
 .meanings-grid {
@@ -38,6 +39,14 @@ h2 {
   color: #ffd8de;
 }
 
+.synonyms-title {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.example {
+  color: #ffffff;
+}
 @media (max-width: 600px) {
   .results {
     padding-left: 10px;
