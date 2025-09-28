@@ -107,6 +107,7 @@ input[type="submit"]:hover {
     max-width: 200px;
     margin: 0 auto;
     display: block;
+    color: #000000;
   }
 
   .meanings-grid {
